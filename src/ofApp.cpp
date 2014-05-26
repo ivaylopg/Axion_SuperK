@@ -4,10 +4,10 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
-    ofSetFrameRate(60);
+    ofSetFrameRate(30);
     
     mountain.loadModel("mountainBiggest.obj");
-    mountain.setPosition(0, -50, 0);
+    mountain.setPosition(0, -100, 0);
 
     showFR = false;
     
