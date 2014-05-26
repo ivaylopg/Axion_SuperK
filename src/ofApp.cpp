@@ -10,6 +10,7 @@ void ofApp::setup(){
     mountain.setPosition(0, -100, 0);
 
     showFR = false;
+    printImages = false;
     
     cam.setup();
     cam.reset(-35);
@@ -167,6 +168,10 @@ void ofApp::draw(){
         ofSetColor(255);
         ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 50,ofGetHeight()-50);
     }
+    if (printImages) {
+        myImage.grabScreen(0,0,ofGetWidth(),ofGetHeight());
+        myImage.saveImage("images/"+ofToString(ofGetFrameNum())+".png",OF_IMAGE_QUALITY_BEST);
+    }
 }
 
 //--------------------------------------------------------------
@@ -193,6 +198,10 @@ void ofApp::keyReleased(int key){
             
         case 'z':
             showFR = !showFR;
+            break;
+            
+        case 'p':
+            printImages = !printImages;
             break;
             
         default:

@@ -46,4 +46,7 @@ class ofApp : public ofBaseApp{
     
     ofSpherePrimitive centerSphere;
     bool showFR;
+    
+    ofImage myImage;
+    bool printImages;
 };
