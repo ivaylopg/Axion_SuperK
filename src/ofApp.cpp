@@ -22,6 +22,13 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    if (ofRandom(0,1000) > 990) {
+        float xTrig = ofRandom(0,ofGetWidth());
+        float yTrig = ofRandom(0, ofGetHeight());
+        for (int i = 0; i < dets.size(); i++){
+            dets[i].hit(xTrig,yTrig,ringSize,thickness);
+        }
+    }
 
 }
 
