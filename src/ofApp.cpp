@@ -6,11 +6,16 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    mountain.loadModel("mountainBiggest.obj");
+    mountain.setPosition(0, -50, 0);
+
     showFR = false;
     
     cam.setup();
-    cam.lockHeight = false;
+    cam.reset(-35);
+    //cam.lockHeight = false;
     cam.setMinMaxY(40, 40);
+    cam.speed = 0.5f;
     //camTargSet = false;
     
     centerSphere.setRadius(30);
@@ -26,8 +31,8 @@ void ofApp::setup(){
     ringSize*=ringSize;
     thickness*=thickness;
     
-    cout << "ring size: " << sqrt(ringSize) << endl;
-    cout << "thickness: " << sqrt(thickness) << endl;
+//    cout << "ring size: " << sqrt(ringSize) << endl;
+//    cout << "thickness: " << sqrt(thickness) << endl;
     
     cylRadius = 400;
     circSlices = 50;
@@ -44,7 +49,7 @@ void ofApp::setup(){
             }
         }
     }
-    cout << cirCount << endl;
+//    cout << cirCount << endl;
     int numDetectors = (circSlices * numRows) + 2 * cirCount;
     
     dets.resize(numDetectors);
@@ -97,12 +102,20 @@ void ofApp::setup(){
         }
     }
     
-    glLineWidth(2);
+    mountain.update();
+    mountMesh = mountain.getCurrentAnimatedMesh(0);
+    
+    
     
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
     #endif
     ofHideCursor();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableDepthTest();
+    glShadeModel(GL_SMOOTH);
+    ofEnableSeparateSpecularLight();
     
 }
 
@@ -121,18 +134,34 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofDisableLighting();
     ofBackground(0);
+
     cam.begin();
     
+    ofPushMatrix();
+    ofScale(0.1, 0.1, 0.1);
+    glLineWidth(2);
     for (int i = 0; i < dets.size(); i++){
         dets[i].draw();
     }
     
     ofSetColor(255);
-    centerSphere.setPosition(0,0,0);
-    centerSphere.drawWireframe();
+    
+//    centerSphere.setPosition(0,0,0);
+//    centerSphere.drawWireframe();
+    
+    ofPopMatrix();
+    
+    float mountainColor = ofClamp(ofMap(ofDistSquared(0, 0, cam.getPosition().x, cam.getPosition().z), 0, 10000, 0, 120),0,120);
+    cam.speed = ofMap(mountainColor, 0, 120, 0.5, 1.2);
+    ofSetColor(mountainColor);
+    glLineWidth(1);
+    mountain.drawWireframe();
+    
     
     cam.end();
+    
     
     if (showFR) {
         ofSetColor(255);
@@ -147,12 +176,27 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if (key == 'f') {
-        ofToggleFullscreen();
-    }
-    
-    if (key =='z') {
-        showFR = !showFR;
+    switch (key) {
+        case ' ':{
+            float xTrig = ofRandom(-400,400);
+            float yTrig = ofRandom(-400,400);
+            float zTrig = ofRandom(-400,400);
+            for (int i = 0; i < dets.size(); i++){
+                dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
+            }
+            break;
+        }
+            
+        case 'f':
+            ofToggleFullscreen();
+            break;
+            
+        case 'z':
+            showFR = !showFR;
+            break;
+            
+        default:
+            break;
     }
 
 }
@@ -175,8 +219,11 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     
+    float xTrig = ofRandom(-400,400);
+    float yTrig = ofRandom(-400,400);
+    float zTrig = ofRandom(-400,400);
     for (int i = 0; i < dets.size(); i++){
-        dets[i].hit(x,y,0,ringSize,thickness);
+        dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
     }
 }
 

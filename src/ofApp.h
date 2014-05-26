@@ -30,6 +30,10 @@ class ofApp : public ofBaseApp{
     
     vector<Detector> dets;
     
+    ofxAssimpModelLoader mountain;
+    ofMesh mountMesh;
+    ofLight mountLight;
+    
     
     float ringSize;
     float thickness;

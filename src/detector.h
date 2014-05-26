@@ -22,4 +22,5 @@ private:
     float energyG;
     float energyB;
     float fadeSpeed;
+    float neutral;
 };

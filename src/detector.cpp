@@ -13,6 +13,7 @@ void Detector::setup(float x, float y, float z){
     energyB = 0.0;
     energyG = 0.0;
     fadeSpeed = 5 + ofRandom(-2,2);
+    neutral = 90;
     sphere.setRadius(size/2);
     sphere.setResolution(sphereRes);
     sphere.setMode(OF_PRIMITIVE_TRIANGLES);
@@ -37,11 +38,11 @@ void Detector::draw(){
         energyR = 0;
     }
     
-    if (energyG < 60) {
-        energyG = 60;
+    if (energyG < neutral) {
+        energyG = neutral;
     }
-    if (energyB < 60) {
-        energyB = 60;
+    if (energyB < neutral) {
+        energyB = neutral;
     }
     
     ofSetColor(energyR,energyG,energyB);
@@ -70,10 +71,10 @@ void Detector::hit(float mX, float mY, float mZ, float range, float thick){
     }
     
     if (ofRandom(0,1000)>950) {
-        energyB = ofRandom(100,255);
+        energyB = ofRandom(neutral+40,255);
     }
     
     if (ofRandom(0,1000)>999) {
-        energyG = ofRandom(100,255);
+        energyG = ofRandom(neutral+40,255);
     }
 }
