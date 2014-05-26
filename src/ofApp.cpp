@@ -23,17 +23,11 @@ void ofApp::setup(){
     centerSphere.setResolution(12);
     centerSphere.setMode(OF_PRIMITIVE_TRIANGLES);
     
-//    ringSize = (ofGetWidth()/5) * (ofGetWidth()/5);
-//    thickness = (ofGetWidth()/6) * (ofGetWidth()/6);
-    
     ringSize = 150;
     thickness = 170;
     
     ringSize*=ringSize;
     thickness*=thickness;
-    
-//    cout << "ring size: " << sqrt(ringSize) << endl;
-//    cout << "thickness: " << sqrt(thickness) << endl;
     
     cylRadius = 400;
     circSlices = 50;
@@ -50,7 +44,7 @@ void ofApp::setup(){
             }
         }
     }
-//    cout << cirCount << endl;
+    
     int numDetectors = (circSlices * numRows) + 2 * cirCount;
     
     dets.resize(numDetectors);
