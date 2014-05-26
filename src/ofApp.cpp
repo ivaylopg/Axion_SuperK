@@ -4,14 +4,16 @@
 void ofApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
+    
+    cam.setup();
+    camTargSet = false;
+    
     numRows = 25;
     numCols = 45;
     ringSize = (ofGetWidth()/5) * (ofGetWidth()/5);
     thickness = (ofGetWidth()/6) * (ofGetWidth()/6);
+    
     dets.resize(numCols*numRows);
-    
-    det.setup(ofRandom(0,ofGetWidth()), ofRandom(0,ofGetHeight()));
-    
     for (int j = 0; j < numRows; j++) {
         for (int i = 0; i < numCols; i++) {
             Detector d;
@@ -36,11 +38,13 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0);
+    cam.begin();
     
     for (int i = 0; i < dets.size(); i++){
         dets[i].draw();
     }
     
+    cam.end();
     ofSetColor(255);
     ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 50,ofGetHeight()-50);
 }

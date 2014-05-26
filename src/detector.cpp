@@ -63,7 +63,7 @@ void Detector::draw(){
 //--------------------------------------------------------------
 void Detector::hit(float mX, float mY, float range, float thick){
     float dist = ofDistSquared(mX, mY, pos.x, pos.y);
-    if (dist >= range && dist <= (range + thick)) {
+    if (dist >= range && dist <= (range + thick) && ofRandom(0, 10) > 3) {
         isHit = true;
         energyR = 255;
         fadeSpeed = 5 + ofRandom(-2,2);

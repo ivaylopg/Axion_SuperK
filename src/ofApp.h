@@ -22,7 +22,10 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    Detector det;
+    ofxFPSCamera cam;
+    bool camTargSet;
+    ofVec3f camPos;
+    
     vector<Detector> dets;
     
     int numRows;
