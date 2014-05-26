@@ -3,8 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
-    numRows = 20;
-    numCols = 40;
+    ofSetFrameRate(60);
+    numRows = 25;
+    numCols = 45;
     ringSize = (ofGetWidth()/5) * (ofGetWidth()/5);
     thickness = (ofGetWidth()/6) * (ofGetWidth()/6);
     dets.resize(numCols*numRows);
@@ -22,7 +23,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if (ofRandom(0,1000) > 990) {
+    if (ofRandom(0,1000) > 993) {
         float xTrig = ofRandom(0,ofGetWidth());
         float yTrig = ofRandom(0, ofGetHeight());
         for (int i = 0; i < dets.size(); i++){
@@ -39,6 +40,9 @@ void ofApp::draw(){
     for (int i = 0; i < dets.size(); i++){
         dets[i].draw();
     }
+    
+    ofSetColor(255);
+    ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 50,ofGetHeight()-50);
 }
 
 //--------------------------------------------------------------

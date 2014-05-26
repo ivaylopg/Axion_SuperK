@@ -3,19 +3,19 @@
 
 //--------------------------------------------------------------
 Detector::Detector(){
-    xPos = 0;
-    yPos = 0;
 }
 
 //--------------------------------------------------------------
 void Detector::setup(float x, float y){
-    xPos = x;
-    yPos = y;
+    pos = ofVec3f(x,y,0);
     isHit = false;
     energyR = 0.0;
     energyB = 0.0;
     energyG = 0.0;
     fadeSpeed = 5 + ofRandom(-2,2);
+    sphere.setRadius(size/2);
+    sphere.setResolution(sphereRes);
+    sphere.setMode(OF_PRIMITIVE_TRIANGLES);
 }
 
 
@@ -45,10 +45,14 @@ void Detector::draw(){
     }
     
     ofSetColor(energyR,energyG,energyB);
-    ofSetRectMode(OF_RECTMODE_CENTER);
+    
     ofPushMatrix();
-    ofTranslate(xPos, yPos);
-    ofRect(0, 0, size, size);
+    ofTranslate(pos.x, pos.y);
+//    ofSetRectMode(OF_RECTMODE_CENTER);
+//    ofRect(0, 0, size, size);
+    sphere.setPosition(0,0,0);
+    sphere.drawWireframe();
+    
     ofPopMatrix();
     
 //    ofSetColor(255, 0, 0);
@@ -58,7 +62,7 @@ void Detector::draw(){
 
 //--------------------------------------------------------------
 void Detector::hit(float mX, float mY, float range, float thick){
-    float dist = ofDistSquared(mX, mY, xPos, yPos);
+    float dist = ofDistSquared(mX, mY, pos.x, pos.y);
     if (dist >= range && dist <= (range + thick)) {
         isHit = true;
         energyR = 255;
@@ -66,10 +70,10 @@ void Detector::hit(float mX, float mY, float range, float thick){
     }
     
     if (ofRandom(0,1000)>950) {
-        energyG = ofRandom(100,255);
+        energyB = ofRandom(100,255);
     }
     
     if (ofRandom(0,1000)>999) {
-        energyB = ofRandom(100,255);
+        energyG = ofRandom(100,255);
     }
 }

@@ -2,6 +2,9 @@
 #include "ofMain.h"
 
 class Detector {
+    static const int size = 20;
+    static const int sphereRes = 3;
+    
 public:
     Detector();
     
@@ -10,11 +13,10 @@ public:
     void draw();
     void hit(float mX, float mY, float range, float thick);
     
-    static const int size = 20;
+    ofSpherePrimitive sphere;
 
 private:
-    float xPos;
-    float yPos;
+    ofVec3f pos;
     bool isHit;
     float energyR;
     float energyG;
