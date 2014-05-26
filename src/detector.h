@@ -8,14 +8,16 @@ public:
     void setup(float x, float y);
     void update();
     void draw();
-    void hit(float mX, float mY);
+    void hit(float mX, float mY, float range, float thick);
     
-    static const int size = 40;
+    static const int size = 20;
 
 private:
     float xPos;
     float yPos;
     bool isHit;
-    float energy;
+    float energyR;
+    float energyG;
+    float energyB;
     float fadeSpeed;
 };

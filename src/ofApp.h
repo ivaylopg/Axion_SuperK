@@ -24,4 +24,9 @@ class ofApp : public ofBaseApp{
     
     Detector det;
     vector<Detector> dets;
+    
+    int numRows;
+    int numCols;
+    float ringSize;
+    float thickness;
 };
