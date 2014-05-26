@@ -2,7 +2,10 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    ofSetVerticalSync(true);
+    dets.resize(20);
+    
+    det.setup(ofRandom(0,ofGetWidth()), ofRandom(0,ofGetHeight()));
 }
 
 //--------------------------------------------------------------
@@ -12,7 +15,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    ofBackground(0);
+    det.draw();
 }
 
 //--------------------------------------------------------------
@@ -42,6 +46,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+    det.hit(x,y);
 
 }
 
