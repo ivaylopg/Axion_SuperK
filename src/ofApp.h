@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxFPSCamera.h"
+#include "ofxAssimpModelLoader.h"
+#include "ofVboMesh.h"
 
 #include "detector.h"
 
@@ -28,8 +30,16 @@ class ofApp : public ofBaseApp{
     
     vector<Detector> dets;
     
-    int numRows;
-    int numCols;
+    
     float ringSize;
     float thickness;
+    
+    int numRows;
+    float circSlices;
+    
+    float cylRadius;
+    float wedgeAngle;
+    
+    ofSpherePrimitive centerSphere;
+    bool showFR;
 };

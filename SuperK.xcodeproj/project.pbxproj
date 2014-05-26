@@ -32,6 +32,11 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 		F9B99DB91932F888000F7AFE /* detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DB81932F888000F7AFE /* detector.cpp */; };
+		F9B99DF21933AFD7000F7AFE /* ofxAssimpAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */; };
+		F9B99DF31933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DC01933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp */; };
+		F9B99DF41933AFD7000F7AFE /* ofxAssimpModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DC21933AFD7000F7AFE /* ofxAssimpModelLoader.cpp */; };
+		F9B99DF51933AFD7000F7AFE /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DC41933AFD7000F7AFE /* ofxAssimpTexture.cpp */; };
+		F9B99DF61933AFD7000F7AFE /* assimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B99DF11933AFD7000F7AFE /* assimp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +102,52 @@
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		F9B99DB71932F83F000F7AFE /* detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detector.h; sourceTree = "<group>"; };
 		F9B99DB81932F888000F7AFE /* detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = detector.cpp; sourceTree = "<group>"; };
+		F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpAnimation.cpp; sourceTree = "<group>"; };
+		F9B99DBF1933AFD7000F7AFE /* ofxAssimpAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAssimpAnimation.h; sourceTree = "<group>"; };
+		F9B99DC01933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpMeshHelper.cpp; sourceTree = "<group>"; };
+		F9B99DC11933AFD7000F7AFE /* ofxAssimpMeshHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAssimpMeshHelper.h; sourceTree = "<group>"; };
+		F9B99DC21933AFD7000F7AFE /* ofxAssimpModelLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpModelLoader.cpp; sourceTree = "<group>"; };
+		F9B99DC31933AFD7000F7AFE /* ofxAssimpModelLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAssimpModelLoader.h; sourceTree = "<group>"; };
+		F9B99DC41933AFD7000F7AFE /* ofxAssimpTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpTexture.cpp; sourceTree = "<group>"; };
+		F9B99DC51933AFD7000F7AFE /* ofxAssimpTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAssimpTexture.h; sourceTree = "<group>"; };
+		F9B99DC61933AFD7000F7AFE /* ofxAssimpUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAssimpUtils.h; sourceTree = "<group>"; };
+		F9B99DCA1933AFD7000F7AFE /* aiAnim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiAnim.h; sourceTree = "<group>"; };
+		F9B99DCB1933AFD7000F7AFE /* aiAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiAssert.h; sourceTree = "<group>"; };
+		F9B99DCC1933AFD7000F7AFE /* aiCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiCamera.h; sourceTree = "<group>"; };
+		F9B99DCD1933AFD7000F7AFE /* aiColor4D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiColor4D.h; sourceTree = "<group>"; };
+		F9B99DCE1933AFD7000F7AFE /* aiColor4D.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aiColor4D.inl; sourceTree = "<group>"; };
+		F9B99DCF1933AFD7000F7AFE /* aiConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiConfig.h; sourceTree = "<group>"; };
+		F9B99DD01933AFD7000F7AFE /* aiDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiDefines.h; sourceTree = "<group>"; };
+		F9B99DD11933AFD7000F7AFE /* aiFileIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiFileIO.h; sourceTree = "<group>"; };
+		F9B99DD21933AFD7000F7AFE /* aiLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiLight.h; sourceTree = "<group>"; };
+		F9B99DD31933AFD7000F7AFE /* aiMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiMaterial.h; sourceTree = "<group>"; };
+		F9B99DD41933AFD7000F7AFE /* aiMaterial.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aiMaterial.inl; sourceTree = "<group>"; };
+		F9B99DD51933AFD7000F7AFE /* aiMatrix3x3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiMatrix3x3.h; sourceTree = "<group>"; };
+		F9B99DD61933AFD7000F7AFE /* aiMatrix3x3.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aiMatrix3x3.inl; sourceTree = "<group>"; };
+		F9B99DD71933AFD7000F7AFE /* aiMatrix4x4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiMatrix4x4.h; sourceTree = "<group>"; };
+		F9B99DD81933AFD7000F7AFE /* aiMatrix4x4.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aiMatrix4x4.inl; sourceTree = "<group>"; };
+		F9B99DD91933AFD7000F7AFE /* aiMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiMesh.h; sourceTree = "<group>"; };
+		F9B99DDA1933AFD7000F7AFE /* aiPostProcess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiPostProcess.h; sourceTree = "<group>"; };
+		F9B99DDB1933AFD7000F7AFE /* aiQuaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiQuaternion.h; sourceTree = "<group>"; };
+		F9B99DDC1933AFD7000F7AFE /* aiScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiScene.h; sourceTree = "<group>"; };
+		F9B99DDD1933AFD7000F7AFE /* aiTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiTexture.h; sourceTree = "<group>"; };
+		F9B99DDE1933AFD7000F7AFE /* aiTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiTypes.h; sourceTree = "<group>"; };
+		F9B99DDF1933AFD7000F7AFE /* aiVector2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiVector2D.h; sourceTree = "<group>"; };
+		F9B99DE01933AFD7000F7AFE /* aiVector3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiVector3D.h; sourceTree = "<group>"; };
+		F9B99DE11933AFD7000F7AFE /* aiVector3D.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = aiVector3D.inl; sourceTree = "<group>"; };
+		F9B99DE21933AFD7000F7AFE /* aiVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aiVersion.h; sourceTree = "<group>"; };
+		F9B99DE31933AFD7000F7AFE /* assimp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = assimp.h; sourceTree = "<group>"; };
+		F9B99DE41933AFD7000F7AFE /* assimp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = assimp.hpp; sourceTree = "<group>"; };
+		F9B99DE61933AFD7000F7AFE /* poppack1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = poppack1.h; sourceTree = "<group>"; };
+		F9B99DE71933AFD7000F7AFE /* pushpack1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pushpack1.h; sourceTree = "<group>"; };
+		F9B99DE81933AFD7000F7AFE /* DefaultLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultLogger.h; sourceTree = "<group>"; };
+		F9B99DE91933AFD7000F7AFE /* IOStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOStream.h; sourceTree = "<group>"; };
+		F9B99DEA1933AFD7000F7AFE /* IOSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSystem.h; sourceTree = "<group>"; };
+		F9B99DEB1933AFD7000F7AFE /* Logger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		F9B99DEC1933AFD7000F7AFE /* LogStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogStream.h; sourceTree = "<group>"; };
+		F9B99DED1933AFD7000F7AFE /* NullLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NullLogger.h; sourceTree = "<group>"; };
+		F9B99DEE1933AFD7000F7AFE /* ProgressHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressHandler.h; sourceTree = "<group>"; };
+		F9B99DF11933AFD7000F7AFE /* assimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = assimp.a; sourceTree = "<group>"; };
 		FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -114,6 +165,7 @@
 				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
 				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
 				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				F9B99DF61933AFD7000F7AFE /* assimp.a in Frameworks */,
 				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
 				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
 				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
@@ -167,6 +219,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F9B99DBC1933AFD7000F7AFE /* ofxAssimpModelLoader */,
 				1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */,
 				71A0ED1EAD3F1D61C53C463C /* ofxFPSCamera */,
 			);
@@ -262,6 +315,117 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		F9B99DBC1933AFD7000F7AFE /* ofxAssimpModelLoader */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DBD1933AFD7000F7AFE /* src */,
+				F9B99DC71933AFD7000F7AFE /* libs */,
+			);
+			name = ofxAssimpModelLoader;
+			sourceTree = "<group>";
+		};
+		F9B99DBD1933AFD7000F7AFE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */,
+				F9B99DBF1933AFD7000F7AFE /* ofxAssimpAnimation.h */,
+				F9B99DC01933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp */,
+				F9B99DC11933AFD7000F7AFE /* ofxAssimpMeshHelper.h */,
+				F9B99DC21933AFD7000F7AFE /* ofxAssimpModelLoader.cpp */,
+				F9B99DC31933AFD7000F7AFE /* ofxAssimpModelLoader.h */,
+				F9B99DC41933AFD7000F7AFE /* ofxAssimpTexture.cpp */,
+				F9B99DC51933AFD7000F7AFE /* ofxAssimpTexture.h */,
+				F9B99DC61933AFD7000F7AFE /* ofxAssimpUtils.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxAssimpModelLoader/src;
+			sourceTree = "<group>";
+		};
+		F9B99DC71933AFD7000F7AFE /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DC81933AFD7000F7AFE /* assimp */,
+			);
+			name = libs;
+			path = ../../../addons/ofxAssimpModelLoader/libs;
+			sourceTree = "<group>";
+		};
+		F9B99DC81933AFD7000F7AFE /* assimp */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DC91933AFD7000F7AFE /* include */,
+				F9B99DEF1933AFD7000F7AFE /* lib */,
+			);
+			path = assimp;
+			sourceTree = "<group>";
+		};
+		F9B99DC91933AFD7000F7AFE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DCA1933AFD7000F7AFE /* aiAnim.h */,
+				F9B99DCB1933AFD7000F7AFE /* aiAssert.h */,
+				F9B99DCC1933AFD7000F7AFE /* aiCamera.h */,
+				F9B99DCD1933AFD7000F7AFE /* aiColor4D.h */,
+				F9B99DCE1933AFD7000F7AFE /* aiColor4D.inl */,
+				F9B99DCF1933AFD7000F7AFE /* aiConfig.h */,
+				F9B99DD01933AFD7000F7AFE /* aiDefines.h */,
+				F9B99DD11933AFD7000F7AFE /* aiFileIO.h */,
+				F9B99DD21933AFD7000F7AFE /* aiLight.h */,
+				F9B99DD31933AFD7000F7AFE /* aiMaterial.h */,
+				F9B99DD41933AFD7000F7AFE /* aiMaterial.inl */,
+				F9B99DD51933AFD7000F7AFE /* aiMatrix3x3.h */,
+				F9B99DD61933AFD7000F7AFE /* aiMatrix3x3.inl */,
+				F9B99DD71933AFD7000F7AFE /* aiMatrix4x4.h */,
+				F9B99DD81933AFD7000F7AFE /* aiMatrix4x4.inl */,
+				F9B99DD91933AFD7000F7AFE /* aiMesh.h */,
+				F9B99DDA1933AFD7000F7AFE /* aiPostProcess.h */,
+				F9B99DDB1933AFD7000F7AFE /* aiQuaternion.h */,
+				F9B99DDC1933AFD7000F7AFE /* aiScene.h */,
+				F9B99DDD1933AFD7000F7AFE /* aiTexture.h */,
+				F9B99DDE1933AFD7000F7AFE /* aiTypes.h */,
+				F9B99DDF1933AFD7000F7AFE /* aiVector2D.h */,
+				F9B99DE01933AFD7000F7AFE /* aiVector3D.h */,
+				F9B99DE11933AFD7000F7AFE /* aiVector3D.inl */,
+				F9B99DE21933AFD7000F7AFE /* aiVersion.h */,
+				F9B99DE31933AFD7000F7AFE /* assimp.h */,
+				F9B99DE41933AFD7000F7AFE /* assimp.hpp */,
+				F9B99DE51933AFD7000F7AFE /* Compiler */,
+				F9B99DE81933AFD7000F7AFE /* DefaultLogger.h */,
+				F9B99DE91933AFD7000F7AFE /* IOStream.h */,
+				F9B99DEA1933AFD7000F7AFE /* IOSystem.h */,
+				F9B99DEB1933AFD7000F7AFE /* Logger.h */,
+				F9B99DEC1933AFD7000F7AFE /* LogStream.h */,
+				F9B99DED1933AFD7000F7AFE /* NullLogger.h */,
+				F9B99DEE1933AFD7000F7AFE /* ProgressHandler.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		F9B99DE51933AFD7000F7AFE /* Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DE61933AFD7000F7AFE /* poppack1.h */,
+				F9B99DE71933AFD7000F7AFE /* pushpack1.h */,
+			);
+			path = Compiler;
+			sourceTree = "<group>";
+		};
+		F9B99DEF1933AFD7000F7AFE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DF01933AFD7000F7AFE /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		F9B99DF01933AFD7000F7AFE /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				F9B99DF11933AFD7000F7AFE /* assimp.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,10 +517,14 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
+				F9B99DF21933AFD7000F7AFE /* ofxAssimpAnimation.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				0B1BAD9F9F9035D94079299F /* ofxFPSCamera.cpp in Sources */,
+				F9B99DF51933AFD7000F7AFE /* ofxAssimpTexture.cpp in Sources */,
 				F9B99DB91932F888000F7AFE /* detector.cpp in Sources */,
+				F9B99DF41933AFD7000F7AFE /* ofxAssimpModelLoader.cpp in Sources */,
+				F9B99DF31933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +694,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					/Users/ivaylopg/Documents/openFrameworks_0.8.1/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -611,6 +780,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					/Users/ivaylopg/Documents/openFrameworks_0.8.1/addons/ofxAssimpModelLoader/libs/assimp/lib/osx,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

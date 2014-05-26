@@ -3,15 +3,15 @@
 
 class Detector {
     static const int size = 20;
-    static const int sphereRes = 3;
+    static const int sphereRes = 2;
     
 public:
     Detector();
     
-    void setup(float x, float y);
+    void setup(float x, float y, float z);
     void update();
     void draw();
-    void hit(float mX, float mY, float range, float thick);
+    void hit(float mX, float mY, float mZ, float range, float thick);
     
     ofSpherePrimitive sphere;
 

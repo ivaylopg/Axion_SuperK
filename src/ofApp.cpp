@@ -1,35 +1,119 @@
 #include "ofApp.h"
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     
+    showFR = false;
+    
     cam.setup();
-    camTargSet = false;
+    cam.lockHeight = false;
+    cam.setMinMaxY(40, 40);
+    //camTargSet = false;
     
-    numRows = 25;
-    numCols = 45;
-    ringSize = (ofGetWidth()/5) * (ofGetWidth()/5);
-    thickness = (ofGetWidth()/6) * (ofGetWidth()/6);
+    centerSphere.setRadius(30);
+    centerSphere.setResolution(12);
+    centerSphere.setMode(OF_PRIMITIVE_TRIANGLES);
     
-    dets.resize(numCols*numRows);
-    for (int j = 0; j < numRows; j++) {
-        for (int i = 0; i < numCols; i++) {
-            Detector d;
-            d.setup(i * (ofGetWidth()/numCols), j * (ofGetHeight()/numRows));
-            dets[j*numCols+i] = d;
+//    ringSize = (ofGetWidth()/5) * (ofGetWidth()/5);
+//    thickness = (ofGetWidth()/6) * (ofGetWidth()/6);
+    
+    ringSize = 150;
+    thickness = 170;
+    
+    ringSize*=ringSize;
+    thickness*=thickness;
+    
+    cout << "ring size: " << sqrt(ringSize) << endl;
+    cout << "thickness: " << sqrt(thickness) << endl;
+    
+    cylRadius = 400;
+    circSlices = 50;
+    numRows = 40;
+    wedgeAngle = ofDegToRad(360.0/circSlices);
+    
+    int cirCount = 0;
+    float radSqared = 400 * 400;
+    int step = 40;
+    for (int i = -cylRadius; i < cylRadius; i+=step) {
+        for (int j = -cylRadius; j < cylRadius; j+=step) {
+            if (ofDistSquared(i, j, 0, 0) < radSqared) {
+                cirCount++;
+            }
         }
     }
+    cout << cirCount << endl;
+    int numDetectors = (circSlices * numRows) + 2 * cirCount;
+    
+    dets.resize(numDetectors);
+    int counter = 0;
+    
+    
+    for (int i = -cylRadius; i < cylRadius; i+=step) {
+        for (int j = -cylRadius; j < cylRadius; j+=step) {
+            if (ofDistSquared(i, j, 0, 0) < radSqared) {
+                
+                counter = (int) ofClamp(counter, 0, numDetectors);
+                
+                Detector d;
+                d.setup(i, -(numRows/2)*20, j);
+                dets[counter] = d;
+                counter++;
+            }
+        }
+    }
+    
+    
+    
+    for (float j = -(numRows/2); j < numRows/2; j++) {
+        for (float i = 0; i < ofDegToRad(360); i+=wedgeAngle) {
+            
+            counter = (int) ofClamp(counter, 0, numDetectors);
+            
+            float x = cylRadius * cos(i);
+            float z = cylRadius * sin(i);
+            
+            Detector d;
+            d.setup(x, j*20, z);
+            dets[counter] = d;
+            counter++;
+            
+        }
+    }
+    
+    for (int i = -cylRadius; i < cylRadius; i+=step) {
+        for (int j = -cylRadius; j < cylRadius; j+=step) {
+            if (ofDistSquared(i, j, 0, 0) < radSqared) {
+                
+                counter = (int) ofClamp(counter, 0, numDetectors);
+                
+                Detector d;
+                d.setup(i, (numRows/2)*20, j);
+                dets[counter] = d;
+                counter++;
+            }
+        }
+    }
+    
+    glLineWidth(2);
+    
+    #ifdef __APPLE__
+        CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
+    #endif
+    ofHideCursor();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if (ofRandom(0,1000) > 993) {
-        float xTrig = ofRandom(0,ofGetWidth());
-        float yTrig = ofRandom(0, ofGetHeight());
+    if (ofRandom(0,1000) > 991) {
+        float xTrig = ofRandom(-400,400);
+        float yTrig = ofRandom(-400,400);
+        float zTrig = ofRandom(-400,400);
         for (int i = 0; i < dets.size(); i++){
-            dets[i].hit(xTrig,yTrig,ringSize,thickness);
+            dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
         }
     }
 
@@ -44,9 +128,16 @@ void ofApp::draw(){
         dets[i].draw();
     }
     
-    cam.end();
     ofSetColor(255);
-    ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 50,ofGetHeight()-50);
+    centerSphere.setPosition(0,0,0);
+    centerSphere.drawWireframe();
+    
+    cam.end();
+    
+    if (showFR) {
+        ofSetColor(255);
+        ofDrawBitmapString(ofToString(ofGetFrameRate(),2), 50,ofGetHeight()-50);
+    }
 }
 
 //--------------------------------------------------------------
@@ -56,6 +147,13 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+    if (key == 'f') {
+        ofToggleFullscreen();
+    }
+    
+    if (key =='z') {
+        showFR = !showFR;
+    }
 
 }
 
@@ -78,7 +176,7 @@ void ofApp::mousePressed(int x, int y, int button){
 void ofApp::mouseReleased(int x, int y, int button){
     
     for (int i = 0; i < dets.size(); i++){
-        dets[i].hit(x,y,ringSize,thickness);
+        dets[i].hit(x,y,0,ringSize,thickness);
     }
 }
 

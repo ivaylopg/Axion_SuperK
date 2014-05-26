@@ -6,8 +6,8 @@ Detector::Detector(){
 }
 
 //--------------------------------------------------------------
-void Detector::setup(float x, float y){
-    pos = ofVec3f(x,y,0);
+void Detector::setup(float x, float y, float z){
+    pos = ofVec3f(x,y,z);
     isHit = false;
     energyR = 0.0;
     energyB = 0.0;
@@ -47,7 +47,7 @@ void Detector::draw(){
     ofSetColor(energyR,energyG,energyB);
     
     ofPushMatrix();
-    ofTranslate(pos.x, pos.y);
+    ofTranslate(pos.x, pos.y, pos.z);
 //    ofSetRectMode(OF_RECTMODE_CENTER);
 //    ofRect(0, 0, size, size);
     sphere.setPosition(0,0,0);
@@ -61,7 +61,7 @@ void Detector::draw(){
 }
 
 //--------------------------------------------------------------
-void Detector::hit(float mX, float mY, float range, float thick){
+void Detector::hit(float mX, float mY, float mZ, float range, float thick){
     float dist = ofDistSquared(mX, mY, pos.x, pos.y);
     if (dist >= range && dist <= (range + thick) && ofRandom(0, 10) > 3) {
         isHit = true;
