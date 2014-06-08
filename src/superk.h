@@ -1,17 +1,15 @@
 #pragma once
 #include "ofMain.h"
+#include "detNode.h"
 
 class Superk {
     static const int size = 20;
     static const int sphereRes = 2;
     
-    struct detNode {
-        ofVec3f nodePos;
-        bool nodeIsHit;
-    };
-    
 public:
     Superk();
+    
+    float neutral = 90;
     
     void setup();
     void update();
@@ -27,10 +25,10 @@ private:
     ofVbo vbo;
     ofSpherePrimitive sphere;
     
-    bool isHit;
-    float energyR;
-    float energyG;
-    float energyB;
-    float fadeSpeed;
-    float neutral;
+//    bool isHit;
+//    float energyR;
+//    float energyG;
+//    float energyB;
+//    float fadeSpeed;
+//    float neutral;
 };

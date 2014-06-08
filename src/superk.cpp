@@ -16,9 +16,11 @@ void Superk::setup(){
     fadeSpeed = 5 + ofRandom(-2,2);
     neutral = 90;
     */
+    
     sphere.setRadius(size/2);
     sphere.setResolution(sphereRes);
     sphere.setMode(OF_PRIMITIVE_TRIANGLES);
+    sphere.setPosition(0,0,0);
     ofMesh mesh = sphere.getMesh();
     vbo.setMesh(mesh, GL_STATIC_DRAW);
 }
@@ -30,35 +32,50 @@ void Superk::update(){
 
 //--------------------------------------------------------------
 void Superk::draw(){
-    if (isHit) {
-        energyR-=fadeSpeed;
+    
+    for (int i = 0; i < allNodes.size(); i++){
+        ofPushMatrix();
+        ofTranslate(allNodes[i].nodePos);
+        if (allNodes[i].nodeIsHit) {
+            allNodes[i].energyR-=allNodes[i].fadeSpeed;
+        }
+        
+        allNodes[i].energyG-=allNodes[i].fadeSpeed;
+        allNodes[i].energyB-=allNodes[i].fadeSpeed;
+        
+        
+        if (allNodes[i].energyR < 0) {
+            allNodes[i].nodeIsHit = false;
+            allNodes[i].energyR = 0;
+        }
+        
+        if (allNodes[i].energyG < neutral) {
+            allNodes[i].energyG = neutral;
+        }
+        if (allNodes[i].energyB < neutral) {
+            allNodes[i].energyB = neutral;
+        }
+        
+        ofSetColor(allNodes[i].energyR,allNodes[i].energyG,allNodes[i].energyB);
+        
+        //sphere.drawWireframe();
+        vbo.drawElements(GL_LINE_STRIP, vbo.getNumIndices());
+        ofSetColor(255);
+        ofPopMatrix();
     }
-    energyG-=fadeSpeed;
-    energyB-=fadeSpeed;
     
     
-    if (energyR < 0) {
-        isHit = false;
-        energyR = 0;
-    }
     
-    if (energyG < neutral) {
-        energyG = neutral;
-    }
-    if (energyB < neutral) {
-        energyB = neutral;
-    }
-    
-    ofSetColor(energyR,energyG,energyB);
-    
+    /*
     ofPushMatrix();
     ofTranslate(pos.x, pos.y, pos.z);
     //    ofSetRectMode(OF_RECTMODE_CENTER);
     //    ofRect(0, 0, size, size);
-    sphere.setPosition(0,0,0);
+    //sphere.setPosition(0,0,0);
     sphere.drawWireframe();
     
     ofPopMatrix();
+     */
     
     //    ofSetColor(255, 0, 0);
     //    ofDrawBitmapString(ofToString(energyR,3), 50, ofGetHeight()-50);
@@ -67,6 +84,7 @@ void Superk::draw(){
 
 //--------------------------------------------------------------
 void Superk::hit(float mX, float mY, float mZ, float range, float thick){
+    /*
     float dist = ofDistSquared(mX, mY, pos.x, pos.y);
     if (dist >= range && dist <= (range + thick) && ofRandom(0, 10) > 3) {
         isHit = true;
@@ -81,4 +99,15 @@ void Superk::hit(float mX, float mY, float mZ, float range, float thick){
     if (ofRandom(0,1000)>999) {
         energyG = ofRandom(neutral+40,255);
     }
+    */
+}
+
+//--------------------------------------------------------------
+void Superk::resize(int i){
+    allNodes.resize(i);
+}
+
+//--------------------------------------------------------------
+void Superk::addNode(int index, detNode d){
+    allNodes[index] = d;
 }

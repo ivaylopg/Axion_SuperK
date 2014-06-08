@@ -103,6 +103,7 @@
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		F93AA4421944F1CB00B1CA89 /* superk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = superk.h; sourceTree = "<group>"; };
 		F93AA4431944F1DB00B1CA89 /* superk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = superk.cpp; sourceTree = "<group>"; };
+		F93AA4451944F80900B1CA89 /* detNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = detNode.h; sourceTree = "<group>"; };
 		F9B99DB71932F83F000F7AFE /* detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detector.h; sourceTree = "<group>"; };
 		F9B99DB81932F888000F7AFE /* detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = detector.cpp; sourceTree = "<group>"; };
 		F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpAnimation.cpp; sourceTree = "<group>"; };
@@ -307,6 +308,7 @@
 				F9B99DB81932F888000F7AFE /* detector.cpp */,
 				F93AA4421944F1CB00B1CA89 /* superk.h */,
 				F93AA4431944F1DB00B1CA89 /* superk.cpp */,
+				F93AA4451944F80900B1CA89 /* detNode.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

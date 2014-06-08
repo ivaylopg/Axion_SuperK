@@ -34,6 +34,18 @@ void ofApp::setup(){
     numRows = 40;
     wedgeAngle = ofDegToRad(360.0/circSlices);
     
+    superk.setup();
+    
+    
+    dt.nodeIsHit = false;
+    dt.energyR = 0.0;
+    dt.energyG = 0.0;
+    dt.energyB = 0.0;
+    dt.nodePos = ofVec3f(0,0,0);
+    dt.fadeSpeed = 5 + ofRandom(-2,2);
+    
+    
+    
     int cirCount = 0;
     float radSqared = 400 * 400;
     int step = 40;
@@ -47,9 +59,8 @@ void ofApp::setup(){
     
     int numDetectors = (circSlices * numRows) + 2 * cirCount;
     
-    dets.resize(numDetectors);
+    superk.resize(numDetectors);
     int counter = 0;
-    
     
     for (int i = -cylRadius; i < cylRadius; i+=step) {
         for (int j = -cylRadius; j < cylRadius; j+=step) {
@@ -57,15 +68,12 @@ void ofApp::setup(){
                 
                 counter = (int) ofClamp(counter, 0, numDetectors);
                 
-                Detector d;
-                d.setup(i, -(numRows/2)*20, j);
-                dets[counter] = d;
+                dt.nodePos = ofVec3f(i, -(numRows/2)*20, j);
+                superk.addNode(counter, dt);
                 counter++;
             }
         }
     }
-    
-    
     
     for (float j = -(numRows/2); j < numRows/2; j++) {
         for (float i = 0; i < ofDegToRad(360); i+=wedgeAngle) {
@@ -75,9 +83,8 @@ void ofApp::setup(){
             float x = cylRadius * cos(i);
             float z = cylRadius * sin(i);
             
-            Detector d;
-            d.setup(x, j*20, z);
-            dets[counter] = d;
+            dt.nodePos = ofVec3f(x, j*20, z);
+            superk.addNode(counter, dt);
             counter++;
             
         }
@@ -89,9 +96,8 @@ void ofApp::setup(){
                 
                 counter = (int) ofClamp(counter, 0, numDetectors);
                 
-                Detector d;
-                d.setup(i, (numRows/2)*20, j);
-                dets[counter] = d;
+                dt.nodePos = ofVec3f(i, (numRows/2)*20, j);
+                superk.addNode(counter, dt);
                 counter++;
             }
         }
@@ -116,14 +122,14 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if (ofRandom(0,1000) > 991) {
-        float xTrig = ofRandom(-400,400);
-        float yTrig = ofRandom(-400,400);
-        float zTrig = ofRandom(-400,400);
-        for (int i = 0; i < dets.size(); i++){
-            dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-        }
-    }
+//    if (ofRandom(0,1000) > 991) {
+//        float xTrig = ofRandom(-400,400);
+//        float yTrig = ofRandom(-400,400);
+//        float zTrig = ofRandom(-400,400);
+//        for (int i = 0; i < dets.size(); i++){
+//            dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
+//        }
+//    }
 
 }
 
@@ -137,9 +143,8 @@ void ofApp::draw(){
     ofPushMatrix();
     ofScale(0.1, 0.1, 0.1);
     glLineWidth(2);
-    for (int i = 0; i < dets.size(); i++){
-        dets[i].draw();
-    }
+    
+    superk.draw();
     
     ofSetColor(255);
     
@@ -177,12 +182,12 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
     switch (key) {
         case ' ':{
-            float xTrig = ofRandom(-400,400);
-            float yTrig = ofRandom(-400,400);
-            float zTrig = ofRandom(-400,400);
-            for (int i = 0; i < dets.size(); i++){
-                dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-            }
+//            float xTrig = ofRandom(-400,400);
+//            float yTrig = ofRandom(-400,400);
+//            float zTrig = ofRandom(-400,400);
+//            for (int i = 0; i < dets.size(); i++){
+//                dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
+//            }
             break;
         }
             
@@ -222,12 +227,12 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     
-    float xTrig = ofRandom(-400,400);
-    float yTrig = ofRandom(-400,400);
-    float zTrig = ofRandom(-400,400);
-    for (int i = 0; i < dets.size(); i++){
-        dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-    }
+//    float xTrig = ofRandom(-400,400);
+//    float yTrig = ofRandom(-400,400);
+//    float zTrig = ofRandom(-400,400);
+//    for (int i = 0; i < dets.size(); i++){
+//        dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
+//    }
 }
 
 //--------------------------------------------------------------
