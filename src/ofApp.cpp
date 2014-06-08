@@ -104,9 +104,6 @@ void ofApp::setup(){
     }
     
     mountain.update();
-    mountMesh = mountain.getCurrentAnimatedMesh(0);
-    
-    
     
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
@@ -156,8 +153,6 @@ void ofApp::draw(){
     ofSetColor(mountainColor);
     glLineWidth(1);
     mountain.drawWireframe();
-    
-    
     cam.end();
     
     
@@ -196,7 +191,7 @@ void ofApp::keyReleased(int key){
             break;
             
         case 'p':
-            printImages = !printImages;
+            //printImages = !printImages;
             break;
             
         default:

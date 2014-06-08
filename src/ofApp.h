@@ -33,8 +33,8 @@ class ofApp : public ofBaseApp{
     detNode dt;
     
     ofxAssimpModelLoader mountain;
-    ofMesh mountMesh;
-    ofLight mountLight;
+    //ofMesh mountMesh;
+    //ofLight mountLight;
     
     
     float ringSize;
@@ -47,6 +47,7 @@ class ofApp : public ofBaseApp{
     float wedgeAngle;
     
     ofSpherePrimitive centerSphere;
+    
     bool showFR;
     
     ofImage myImage;
