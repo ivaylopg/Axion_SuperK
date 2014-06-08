@@ -64,19 +64,6 @@ void Superk::draw(){
         ofPopMatrix();
     }
     
-    
-    
-    /*
-    ofPushMatrix();
-    ofTranslate(pos.x, pos.y, pos.z);
-    //    ofSetRectMode(OF_RECTMODE_CENTER);
-    //    ofRect(0, 0, size, size);
-    //sphere.setPosition(0,0,0);
-    sphere.drawWireframe();
-    
-    ofPopMatrix();
-     */
-    
     //    ofSetColor(255, 0, 0);
     //    ofDrawBitmapString(ofToString(energyR,3), 50, ofGetHeight()-50);
     //    ofDrawBitmapString(ofToString(fadeSpeed,3), 50, ofGetHeight()-30);
@@ -84,22 +71,24 @@ void Superk::draw(){
 
 //--------------------------------------------------------------
 void Superk::hit(float mX, float mY, float mZ, float range, float thick){
-    /*
-    float dist = ofDistSquared(mX, mY, pos.x, pos.y);
-    if (dist >= range && dist <= (range + thick) && ofRandom(0, 10) > 3) {
-        isHit = true;
-        energyR = 255;
-        fadeSpeed = 5 + ofRandom(-2,2);
+    
+    for (int i = 0; i < allNodes.size(); i++){
+        float dist = ofDistSquared(mX, mY, allNodes[i].nodePos.x, allNodes[i].nodePos.y);
+        if (dist >= range && dist <= (range + thick) && ofRandom(0, 10) > 3) {
+            allNodes[i].nodeIsHit = true;
+            allNodes[i].energyR = 255;
+            allNodes[i].fadeSpeed = 5 + ofRandom(-2,2);
+        }
+        
+        if (ofRandom(0,1000)>950) {
+            allNodes[i].energyB = ofRandom(neutral+40,255);
+        }
+        
+        if (ofRandom(0,1000)>999) {
+            allNodes[i].energyG = ofRandom(neutral+40,255);
+        }
     }
     
-    if (ofRandom(0,1000)>950) {
-        energyB = ofRandom(neutral+40,255);
-    }
-    
-    if (ofRandom(0,1000)>999) {
-        energyG = ofRandom(neutral+40,255);
-    }
-    */
 }
 
 //--------------------------------------------------------------

@@ -122,14 +122,12 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//    if (ofRandom(0,1000) > 991) {
-//        float xTrig = ofRandom(-400,400);
-//        float yTrig = ofRandom(-400,400);
-//        float zTrig = ofRandom(-400,400);
-//        for (int i = 0; i < dets.size(); i++){
-//            dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-//        }
-//    }
+    if (ofRandom(0,1000) > 991) {
+        float xTrig = ofRandom(-400,400);
+        float yTrig = ofRandom(-400,400);
+        float zTrig = ofRandom(-400,400);
+        superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
+    }
 
 }
 
@@ -142,7 +140,7 @@ void ofApp::draw(){
     
     ofPushMatrix();
     ofScale(0.1, 0.1, 0.1);
-    glLineWidth(2);
+    //glLineWidth(2);
     
     superk.draw();
     
@@ -182,12 +180,10 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
     switch (key) {
         case ' ':{
-//            float xTrig = ofRandom(-400,400);
-//            float yTrig = ofRandom(-400,400);
-//            float zTrig = ofRandom(-400,400);
-//            for (int i = 0; i < dets.size(); i++){
-//                dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-//            }
+            float xTrig = ofRandom(-400,400);
+            float yTrig = ofRandom(-400,400);
+            float zTrig = ofRandom(-400,400);
+            superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
             break;
         }
             
@@ -227,12 +223,10 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
     
-//    float xTrig = ofRandom(-400,400);
-//    float yTrig = ofRandom(-400,400);
-//    float zTrig = ofRandom(-400,400);
-//    for (int i = 0; i < dets.size(); i++){
-//        dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-//    }
+    float xTrig = ofRandom(-400,400);
+    float yTrig = ofRandom(-400,400);
+    float zTrig = ofRandom(-400,400);
+    superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
 }
 
 //--------------------------------------------------------------

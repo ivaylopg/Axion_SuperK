@@ -4,7 +4,7 @@
 
 class Superk {
     static const int size = 20;
-    static const int sphereRes = 2;
+    static const int sphereRes = 4;
     
 public:
     Superk();
