@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
-    ofSetFrameRate(30);
+    ofSetFrameRate(60);
     
     mountain.loadModel("mountainBiggest.obj");
     mountain.setPosition(0, -100, 0);
@@ -34,6 +34,18 @@ void ofApp::setup(){
     numRows = 40;
     wedgeAngle = ofDegToRad(360.0/circSlices);
     
+    superk.setup();
+    
+    
+    dt.nodeIsHit = false;
+    dt.energyR = 0.0;
+    dt.energyG = 0.0;
+    dt.energyB = 0.0;
+    dt.nodePos = ofVec3f(0,0,0);
+    dt.fadeSpeed = 5 + ofRandom(-2,2);
+    
+    
+    
     int cirCount = 0;
     float radSqared = 400 * 400;
     int step = 40;
@@ -47,9 +59,8 @@ void ofApp::setup(){
     
     int numDetectors = (circSlices * numRows) + 2 * cirCount;
     
-    dets.resize(numDetectors);
+    superk.resize(numDetectors);
     int counter = 0;
-    
     
     for (int i = -cylRadius; i < cylRadius; i+=step) {
         for (int j = -cylRadius; j < cylRadius; j+=step) {
@@ -57,15 +68,12 @@ void ofApp::setup(){
                 
                 counter = (int) ofClamp(counter, 0, numDetectors);
                 
-                Detector d;
-                d.setup(i, -(numRows/2)*20, j);
-                dets[counter] = d;
+                dt.nodePos = ofVec3f(i, -(numRows/2)*20, j);
+                superk.addNode(counter, dt);
                 counter++;
             }
         }
     }
-    
-    
     
     for (float j = -(numRows/2); j < numRows/2; j++) {
         for (float i = 0; i < ofDegToRad(360); i+=wedgeAngle) {
@@ -75,9 +83,8 @@ void ofApp::setup(){
             float x = cylRadius * cos(i);
             float z = cylRadius * sin(i);
             
-            Detector d;
-            d.setup(x, j*20, z);
-            dets[counter] = d;
+            dt.nodePos = ofVec3f(x, j*20, z);
+            superk.addNode(counter, dt);
             counter++;
             
         }
@@ -89,18 +96,14 @@ void ofApp::setup(){
                 
                 counter = (int) ofClamp(counter, 0, numDetectors);
                 
-                Detector d;
-                d.setup(i, (numRows/2)*20, j);
-                dets[counter] = d;
+                dt.nodePos = ofVec3f(i, (numRows/2)*20, j);
+                superk.addNode(counter, dt);
                 counter++;
             }
         }
     }
     
     mountain.update();
-    mountMesh = mountain.getCurrentAnimatedMesh(0);
-    
-    
     
     #ifdef __APPLE__
         CGDisplayHideCursor(NULL); // <- Sometimes necessary to hide cursor on Macs
@@ -120,9 +123,7 @@ void ofApp::update(){
         float xTrig = ofRandom(-400,400);
         float yTrig = ofRandom(-400,400);
         float zTrig = ofRandom(-400,400);
-        for (int i = 0; i < dets.size(); i++){
-            dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-        }
+        superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
     }
 
 }
@@ -136,10 +137,9 @@ void ofApp::draw(){
     
     ofPushMatrix();
     ofScale(0.1, 0.1, 0.1);
-    glLineWidth(2);
-    for (int i = 0; i < dets.size(); i++){
-        dets[i].draw();
-    }
+    //glLineWidth(2);
+    
+    superk.draw();
     
     ofSetColor(255);
     
@@ -153,8 +153,6 @@ void ofApp::draw(){
     ofSetColor(mountainColor);
     glLineWidth(1);
     mountain.drawWireframe();
-    
-    
     cam.end();
     
     
@@ -180,9 +178,7 @@ void ofApp::keyReleased(int key){
             float xTrig = ofRandom(-400,400);
             float yTrig = ofRandom(-400,400);
             float zTrig = ofRandom(-400,400);
-            for (int i = 0; i < dets.size(); i++){
-                dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-            }
+            superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
             break;
         }
             
@@ -195,7 +191,7 @@ void ofApp::keyReleased(int key){
             break;
             
         case 'p':
-            printImages = !printImages;
+            //printImages = !printImages;
             break;
             
         default:
@@ -225,9 +221,7 @@ void ofApp::mouseReleased(int x, int y, int button){
     float xTrig = ofRandom(-400,400);
     float yTrig = ofRandom(-400,400);
     float zTrig = ofRandom(-400,400);
-    for (int i = 0; i < dets.size(); i++){
-        dets[i].hit(xTrig,yTrig,zTrig,ringSize,thickness);
-    }
+    superk.hit(xTrig,yTrig,zTrig,ringSize,thickness);
 }
 
 //--------------------------------------------------------------

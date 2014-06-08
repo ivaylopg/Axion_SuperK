@@ -5,7 +5,8 @@
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
 
-#include "detector.h"
+#include "superk.h"
+#include "detNode.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,11 +29,12 @@ class ofApp : public ofBaseApp{
     bool camTargSet;
     ofVec3f camPos;
     
-    vector<Detector> dets;
+    Superk superk;
+    detNode dt;
     
     ofxAssimpModelLoader mountain;
-    ofMesh mountMesh;
-    ofLight mountLight;
+    //ofMesh mountMesh;
+    //ofLight mountLight;
     
     
     float ringSize;
@@ -45,6 +47,7 @@ class ofApp : public ofBaseApp{
     float wedgeAngle;
     
     ofSpherePrimitive centerSphere;
+    
     bool showFR;
     
     ofImage myImage;
