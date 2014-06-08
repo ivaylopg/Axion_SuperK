@@ -31,6 +31,7 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F93AA4441944F1DB00B1CA89 /* superk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93AA4431944F1DB00B1CA89 /* superk.cpp */; };
 		F9B99DB91932F888000F7AFE /* detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DB81932F888000F7AFE /* detector.cpp */; };
 		F9B99DF21933AFD7000F7AFE /* ofxAssimpAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */; };
 		F9B99DF31933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9B99DC01933AFD7000F7AFE /* ofxAssimpMeshHelper.cpp */; };
@@ -100,6 +101,8 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		F93AA4421944F1CB00B1CA89 /* superk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = superk.h; sourceTree = "<group>"; };
+		F93AA4431944F1DB00B1CA89 /* superk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = superk.cpp; sourceTree = "<group>"; };
 		F9B99DB71932F83F000F7AFE /* detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detector.h; sourceTree = "<group>"; };
 		F9B99DB81932F888000F7AFE /* detector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = detector.cpp; sourceTree = "<group>"; };
 		F9B99DBE1933AFD7000F7AFE /* ofxAssimpAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAssimpAnimation.cpp; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				F9B99DB71932F83F000F7AFE /* detector.h */,
 				F9B99DB81932F888000F7AFE /* detector.cpp */,
+				F93AA4421944F1CB00B1CA89 /* superk.h */,
+				F93AA4431944F1DB00B1CA89 /* superk.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -517,6 +522,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
+				F93AA4441944F1DB00B1CA89 /* superk.cpp in Sources */,
 				F9B99DF21933AFD7000F7AFE /* ofxAssimpAnimation.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,

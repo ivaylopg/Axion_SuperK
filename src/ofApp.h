@@ -5,7 +5,7 @@
 #include "ofxAssimpModelLoader.h"
 #include "ofVboMesh.h"
 
-#include "detector.h"
+#include "superk.h"
 
 class ofApp : public ofBaseApp{
 
